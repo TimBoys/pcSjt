@@ -68,19 +68,36 @@
 					</div>
 				</div>
 			</div>
-<!--轮播-->
-<!--内容模块-->
+<!--轮播2-->
 		<div class="carouselCont2">
 				<div class="ctt-oneTitle">素匠泰茶</div>
 				<div class="ctt-twoTitle"><div class="line"></div></div>
 				<div class="ctt-threeTitle">用心带来全新饮品体验</div>	
-		<Carousel v-model="value1" loop class="carouselCont">
-			<CarouselItem v-for="(imgItem,index) in banner" :key="index">
-				<div class="demo-carousel">
-					<img class="carouselImg" :src="imgItem.figureAddress" />
+				<Carousel v-model="value1" loop class="carouselCont">
+					<CarouselItem v-for="(imgItem,index) in banner" :key="index">
+						<div class="demo-carousel">
+							<img class="carouselImg" :src="imgItem.figureAddress" />
+						</div>
+					</CarouselItem>
+				</Carousel>		
+				
+				<!--模态框2-->
+				<div class="carouseScroll">
+					<div>
+						<div class="cs-pre" @click="csPre">pre</div>
+						<div class="allCont">
+						<div class="csCont" ref="csCont">
+							<div class="cscItem">放假啊上了飞机放假啊上了飞机放假啊上了飞机</div>		
+							<div class="cscItem">123</div>		
+							<div class="cscItem">123</div>		
+						</div>
+						</div>
+						<div class="cs-next" @click="csNext">next</div>
+					</div>
+					
+					
 				</div>
-			</CarouselItem>
-		</Carousel>				
+				<!--模态框2-->
 				
 		</div>
 
@@ -305,6 +322,18 @@
 					console.log(err)
 				})				
 			},
+			
+			//轮播2
+			csPre(){
+				
+				
+				
+			},
+			csNext(){
+				
+				
+				
+			}
 		},
 		components: {
 			XImg,
@@ -318,6 +347,7 @@
 
 <style scoped="scoped" lang="scss">
 @import "../../assets/scss/util";
+
 
 	.initCont {
 		margin-top: 1rem;
@@ -523,7 +553,45 @@
 				}				
 				.ctt-threeTitle{
 					color: $originColor;
-				}				
+				}	
+				
+				.carouseScroll{
+					height: 4rem;
+					width: 100%;
+					background-color: rgba(0,0,0,0.4);
+					div{
+						height: 4rem;
+						width: 100%;
+						div{
+							display: inline-block;
+							float: left;
+						}
+						.cs-pre{
+							width: 10%;
+						}
+						.allCont{
+							width: 80%;
+							overflow-x: scroll;
+							overflow-y: hidden;
+							&::-webkit-scrollbar { width: 0 !important }
+							-ms-overflow-style: none;
+							overflow: -moz-scrollbars-none;
+						.csCont{
+							width:30rem;
+							.cscItem{
+								display: inline-block;
+								height: 2rem;
+								width: 8rem;
+								background-color: orange;
+							}
+						}
+						}
+						.cs-next{
+							width: 10%;
+						}
+						
+					}
+				}			
 			}
 			/*加盟*/
 			.joinUsCont{

@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "iview": "^3.0.1",
     "less": "^3.7.1",
     "less-loader": "^4.1.0",
     "lodash": "^4.17.10",
