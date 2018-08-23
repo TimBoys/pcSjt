@@ -11,6 +11,10 @@
 		<img v-lazy="imgSrc">
 		<swiper :list="banner"></swiper>-->
 		{{$route.query}}
+		    <a href="./wxindex.html">to_单季精选2</a>
+    <a href="./wxindex.html#/classification">to_所有商品2</a>
+      
+      <button @click="button2">button</button>
 	</div>
 </template>
 

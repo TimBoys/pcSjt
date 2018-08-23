@@ -11,6 +11,10 @@ import messages from './i18n/i18n';
 import localLang from './i18n/localeLang';
 import VueLazyload from 'vue-lazyload';
 import './assets/font/iconfont.css';
+import iView from 'iview';
+import 'iview/dist/styles/iview.css';
+
+Vue.use(iView);
 
 //配置axios
 axios.defaults.headers.get['Content-Type'] = 'application/json';

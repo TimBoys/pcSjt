@@ -20,7 +20,7 @@ Vue.use(Router)
 export default new Router({
 	routes: [{
 			path: '/',
-			redirect: '/index'
+			redirect: '/pcHome'
 		},
 		{
 			path: '/test',
@@ -28,12 +28,18 @@ export default new Router({
 			component: test
 		},
 		{
-			path: '/index',
-			name: 'index',
+			path: '/pcHome',
+			name: 'pcHome',
 		    component(resolve){
-		       require(['@/views/index/index.vue'], resolve)
+		       require(['@/views/pcHome/pcHome.vue'], resolve)
 		    }
-		}
-		
+		},
+		{
+			path: '/applyJoin',
+			name: 'applyJoin',
+		    component(resolve){
+		       require(['@/views/applyJoin/applyJoin.vue'], resolve)
+		    }
+		}		
 	]
 })
