@@ -42,10 +42,11 @@ html {
 
 body {
     @include f14px;
-    width: 10rem;
-    margin: 0 auto;
+//  width: 10rem;
+//  margin: 0 auto;
     position: relative;
-    background-color: $bodyBackgroundColor;
+//  background-color: $bodyBackgroundColor;
+    background-color: #FFFFFF;
 }
 
 img {
