@@ -13,21 +13,21 @@
 
 		<a class="navbar-brand nsjt-brand" href="#"><x-img v-lazy="sjtLogo"  class="sjtLogo_img"></x-img>·素匠泰茶</a>
 	</div>
-	<div class="collapse navbar-collapse " id="example-navbar-collapse">
+	<div class="collapse navbar-collapse divCollapse" id="example-navbar-collapse" ref="divCollapse">
 		<ul class="nav navbar-nav navbar-right nsjt-right wbStyle" v-if="iswbStyle">
-			<li><a href="#/pcHome">首页</a></li>
-			<li><a href="#1">当季精选</a></li>
-			<li><a href="#2">所有商品</a></li>
-			<li><a href="#3">个人中心</a></li>
-			<li><a href="#/applyJoin">申请加盟</a></li>
+			<li><a href="#/pcHome" :class="{'actived' : isActive('pcHome')}">首页</a></li>
+			<li><a href="./wxindex.html#/home" :class="{'actived' : isActive('home')}">当季精选</a></li>
+			<li><a href="./wxindex.html#/classification" :class="{'actived' : isActive('classification')}">所有商品</a></li>
+			<li><a href="./wxindex.html#/mine" :class="{'actived' : isActive('mine')}">个人中心</a></li>
+			<li><a href="#/applyJoin" :class="{'actived' : isActive('applyJoin')}">申请加盟</a></li>
 		</ul>
 		
 		<ul class="nav navbar-nav navbar-right nsjt-right" v-else>
-			<li><a href="#/pcHome">首页</a></li>
-			<li><a href="#1">当季精选</a></li>
-			<li><a href="#2">所有商品</a></li>
-			<li><a href="#3">个人中心</a></li>
-			<li><a href="#/applyJoin">申请加盟</a></li>
+			<li><a href="#/pcHome" :class="{'actived' : isActive('pcHome')}">首页</a></li>
+			<li><a href="./wxindex.html#/home" :class="{'actived' : isActive('home')}">当季精选</a></li>
+			<li><a href="./wxindex.html#/classification" :class="{'actived' : isActive('classification')}">所有商品</a></li>
+			<li><a href="./wxindex.html#/mine" :class="{'actived' : isActive('mine')}">个人中心</a></li>
+			<li><a href="#/applyJoin" :class="{'actived' : isActive('applyJoin')}">申请加盟</a></li>
 		</ul>
 		
 	</div>
@@ -66,6 +66,16 @@ export default {
   		sjtLogo:"../../static/images/mine/sjtLogo.jpg",
   		iswbStyle:false,
   		localLang: "zh",
+  	}
+  },
+  watch:{
+  	"$route"(to,from){
+  			this.nowUrl = to.fullPath;
+//			console.dir(this.$refs.divCollapse.classList)
+  			if (this.$refs.divCollapse.classList[this.$refs.divCollapse.classList.length -1] == "in") {
+					$(".divCollapse").removeClass("in");
+					
+  			}
   	}
   },
 	mounted:function(){
@@ -108,7 +118,7 @@ export default {
 				var _this = this;
 			 _this.changeNavColor();
 				$(window).resize(function () {          //当浏览器大小变化时
-				    console.log($(window).width());          //浏览器时下窗口可视区域高度
+//				    console.log($(window).width());          //浏览器时下窗口可视区域高度
 				    _this.changeNavColor();
 
 				});
@@ -120,6 +130,9 @@ export default {
 	   		 }else{
 				    	this.iswbStyle = false;
 				  }			
+			},
+			isActive(route){
+				 return this.nowUrl.indexOf(route) != -1;
 			}
 	},
 	
@@ -192,7 +205,14 @@ export default {
 				margin-top: 0;
 				margin-right: 0rem;
 				text-align: center;
+				.actived{
+					color:$originColor!important;
+				}
 				li a{
+					&:hover{
+						color:$originColor;
+						opacity: 0.4;
+					}
 					font-size: 0.3rem;
 					line-height: 0.5rem;
 					height: 1rem;

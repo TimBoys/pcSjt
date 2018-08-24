@@ -4,7 +4,7 @@
 		<Carousel v-model="value1" loop class="carouselCont">
 			<CarouselItem v-for="(imgItem,index) in banner" :key="index">
 				<div class="demo-carousel">
-					<img class="carouselImg" :src="imgItem.figureAddress" />
+					<x-img class="carouselImg" v-lazy="imgItem.figureAddress" /></x-img>
 				</div>
 			</CarouselItem>
 		</Carousel>
@@ -72,27 +72,19 @@
 		<div class="carouselCont2">
 				<div class="ctt-oneTitle">素匠泰茶</div>
 				<div class="ctt-twoTitle"><div class="line"></div></div>
-				<div class="ctt-threeTitle">用心带来全新饮品体验</div>	
-				<Carousel v-model="value1" loop class="carouselCont">
-					<CarouselItem v-for="(imgItem,index) in banner" :key="index">
-						<div class="demo-carousel">
-							<img class="carouselImg" :src="imgItem.figureAddress" />
-						</div>
-					</CarouselItem>
-				</Carousel>		
-				
+				<div class="ctt-threeTitle">每一杯好差，从用料开始</div>	
 				<!--模态框2-->
 				<div class="carouseScroll">
-					<div>
-						<div class="cs-pre" @click="csPre">pre</div>
-						<div class="allCont">
-						<div class="csCont" ref="csCont">
-							<div class="cscItem">放假啊上了飞机放假啊上了飞机放假啊上了飞机</div>		
-							<div class="cscItem">123</div>		
-							<div class="cscItem">123</div>		
+					<div class="csModel">
+						<div class="cs-pre" @click="csPre"><</div>
+						<div class="allCont" ref="allCsCont">
+						<div class="csCont" >
+							<div class="cscItem" v-for="(cscOneItem,index) in cscItem" :key="index">
+								<x-img v-lazy="cscOneItem" class="cscItemImg"></x-img>
+							</div>		
 						</div>
 						</div>
-						<div class="cs-next" @click="csNext">next</div>
+						<div class="cs-next" @click="csNext">></div>
 					</div>
 					
 					
@@ -126,7 +118,6 @@
 									<x-img v-lazy="ftclcItem.src" class="ftcrc-Img"></x-img>
 									<div>{{ftclcItem.textCont}}</div>
 								</div>
-								
 							</div>
 						</div>
 						<div class="ftc-right">
@@ -147,8 +138,10 @@
 <script>
 	import VueDB from '../../util/vue-db/vue-db-long'
 	import { XImg, Flexbox, FlexboxItem, Actionsheet } from 'vux';
+	import _ from 'lodash';	
 	var DB = new VueDB();
-
+	var sivTime = null;
+	var crouselScrWidth = null;
 	export default {
 		name: "home",
 		data() {
@@ -162,12 +155,14 @@
 					localPos: "../../../static/images/home/local_position2.png",
 					localName: ""
 				},
+				//关于我们
 				aboutImg:[
 					"../../../static/images/home/testImg5.jpg",
 					"../../../static/images/home/testImg6.jpg",
 					"../../../static/images/home/testImg7.jpg",
 					"../../../static/images/home/testImg8.jpg",
 				],
+				//加入我们
 				joinUsCont:[{
 					src:"../../../static/images/home/joinUs.png",
 					dectOne:"经营模式支持",
@@ -199,7 +194,10 @@
 					}
 					
 				],				
-					
+
+				//轮播2
+				cscItem:["../../../static/images/home/testImg1.jpg","../../../static/images/home/testImg2.jpg","../../../static/images/home/testImg3.jpg","../../../static/images/home/testImg4.jpg","../../../static/images/home/testImg5.jpg","../../../static/images/home/testImg6.jpg","../../../static/images/home/testImg7.jpg","../../../static/images/home/testImg8.jpg","../../../static/images/home/testImg2.jpg","../../../static/images/home/testImg1.jpg",],
+				crouselScrWidth:null, //每次滚动距离
 				//底部联系我们三个
 				ftclcCont:[{
 					src:"../../static/images/mine/addr.png",
@@ -220,7 +218,7 @@
 		mounted: function() {
 
 			//初始化轮播图
-//			this.initGetCarousel2();
+			this.allCsCont();
 			//初始化店铺
 			this.initGetStoreId();
 			//初始化店铺数据
@@ -324,15 +322,24 @@
 			},
 			
 			//轮播2
+			allCsCont(){
+//				console.dir(this.$refs.allCsCont)
+//				console.log(this.$refs.allCsCont.scrollWidth - this.$refs.allCsCont.clientWidth)
+				var canScrollWidth = this.$refs.allCsCont.scrollWidth - this.$refs.allCsCont.clientWidth; //可以滚动的宽度
+				crouselScrWidth = this.$refs.allCsCont.scrollWidth / 5;
+//				sivTime =  setInterval(()=>{
+//					this.$refs.allCsCont.scrollLeft =  this.$refs.allCsCont.scrollLeft + crouselScrWidth / 100 ;
+//					console.log(this.$refs.allCsCont.scrollLeft)
+//					if(this.$refs.allCsCont.scrollLeft >= canScrollWidth){
+//						this.$refs.allCsCont.scrollLeft = 0;
+//					}
+//				},40)
+			},
 			csPre(){
-				
-				
-				
+				this.$refs.allCsCont.scrollLeft += crouselScrWidth;
 			},
 			csNext(){
-				
-				
-				
+				this.$refs.allCsCont.scrollLeft -= crouselScrWidth;
 			}
 		},
 		components: {
@@ -347,8 +354,6 @@
 
 <style scoped="scoped" lang="scss">
 @import "../../assets/scss/util";
-
-
 	.initCont {
 		margin-top: 1rem;
 		.carouselCont {
@@ -558,37 +563,48 @@
 				.carouseScroll{
 					height: 4rem;
 					width: 100%;
-					background-color: rgba(0,0,0,0.4);
-					div{
-						height: 4rem;
-						width: 100%;
+					/*background-color: rgba(0,0,0,0.8);*/
+					background-image: url("../../../static/images/home/testImg5.jpg");
+					background-repeat:no-repeat ;
+					background-size:100% 100% ;
+					overflow:hidden;
+					margin-top:0.2rem ;
+					.csModel{
+						margin:0.2rem 2%;
+						display: flex;
+						background-color: rgba(0,0,0,0.4);
+						width:96%;
+						height: 3.6rem;					
 						div{
 							display: inline-block;
 							float: left;
 						}
-						.cs-pre{
-							width: 10%;
+						.cs-pre,.cs-next{
+							width: 8%;
+							line-height: 3.6rem;
+							font-size: 0.8rem;
+							color: #fff;
 						}
 						.allCont{
-							width: 80%;
+							align-self: center;
+							width: 84%;
 							overflow-x: scroll;
 							overflow-y: hidden;
 							&::-webkit-scrollbar { width: 0 !important }
 							-ms-overflow-style: none;
 							overflow: -moz-scrollbars-none;
 						.csCont{
-							width:30rem;
+							min-width:25rem;
 							.cscItem{
-								display: inline-block;
-								height: 2rem;
-								width: 8rem;
-								background-color: orange;
+								width: 2.5rem;
+								.cscItemImg{
+									width:2rem;
+									height: 2rem;
+								}
 							}
 						}
 						}
-						.cs-next{
-							width: 10%;
-						}
+
 						
 					}
 				}			
@@ -651,10 +667,12 @@
 							flex: 3;
 							padding: 0.4rem;
 							.ftcl-title{
-								
+								padding-bottom:0.4rem ;
 							}
 							.ftcl-cont{
+								font-size: 0.34rem;
 								.ftclc-item{
+									margin-bottom: 0.08rem;
 									display: flex;
 									.ftcrc-Img{
 										width: .5rem;
