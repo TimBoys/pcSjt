@@ -174,7 +174,7 @@ export default {
 			height: 0.5rem;
 			margin-top:0.24rem;
 			padding: 2px;
-			margin-right:0.8rem;
+			padding-right:0.4rem;
 			border: 0;
 			&:hover{
 				background-color: #fff;
@@ -204,6 +204,7 @@ export default {
 				overflow: visible;
 				margin-top: 0;
 				margin-right: 0rem;
+				padding-right: 0.2rem;
 				text-align: center;
 				.actived{
 					color:$originColor!important;
@@ -214,7 +215,7 @@ export default {
 						opacity: 0.4;
 					}
 					font-size: 0.3rem;
-					line-height: 0.5rem;
+					line-height: 0.8rem;
 					height: 1rem;
 				}
 			}
@@ -227,7 +228,7 @@ export default {
 			right: 0;
 			margin-right: 0.2rem;
 			height: 1rem;
-			padding: 0.22rem 0;
+			padding:0.26rem 0 0.2rem 0;
 			font-size: 0.34rem;
 			width: 0.5rem;
 			color:#333;

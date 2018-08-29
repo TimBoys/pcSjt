@@ -40,7 +40,11 @@
 			<div class="ct-aboutAs">
 				<div class="ctt-one">
 					<div class="ctto-about">关于我们</div>
-					<div class="ctto-aboutCont">封建厘卡即使灯笼裤飞机封建势力放进塑料袋法律精神独立房间数量开发的分厘卡即使灯笼裤飞机间数量开发的分厘卡即使灯笼裤飞机封建势力放进塑料袋法律精神独立房间数量开发的分厘卡即使灯笼裤飞机裤飞机封建势力放进塑料袋法律精神独立房间数量开发的分厘卡即使灯笼裤飞机</div>
+					<div class="ctto-aboutCont">
+						<div class="p">素匠泰茶有别于市面上的传统奶茶，从名字上大家可以知道，我们是主营泰式奶茶的，在市面上港式、台式奶茶层出不穷的时代，我们想让大家喝到不一样的饮品，感受到生活中与众不同的小确幸。</div>
+						<div class="p">“Prime”我们取它的最初的、最好的意思，旨在为大家传递我们想把最初的、最好的产品带给大家的理念，让大家能喝到我们用匠心打造的饮品。</div>	
+						<div class="p">为了塑造与众不同的品牌形象，我们以突破传统台式奶茶口味为宗旨，融入泰式制作工艺，创新奶茶发展理念，现在在行业中已经成为了一个标杆式的品牌，我们会不忘初心，让素匠泰茶成为一个被更多人喜欢的品牌。</div>							
+					</div>
 					
 				</div>
 				<div class="ctt-two">
@@ -76,7 +80,7 @@
 				<!--模态框2-->
 				<div class="carouseScroll">
 					<div class="csModel">
-						<div class="cs-pre" @click="csPre"><</div>
+						<div class="cs-pre" @click="csNext"><</div>
 						<div class="allCont" ref="allCsCont">
 						<div class="csCont" >
 							<div class="cscItem" v-for="(cscOneItem,index) in cscItem" :key="index">
@@ -84,7 +88,7 @@
 							</div>		
 						</div>
 						</div>
-						<div class="cs-next" @click="csNext">></div>
+						<div class="cs-next" @click="csPre">></div>
 					</div>
 					
 					
@@ -155,6 +159,7 @@
 					localPos: "../../../static/images/home/local_position2.png",
 					localName: ""
 				},
+				aboutCont:"素匠泰茶有别于市面上的传统奶茶，从名字上大家可以知道，我们是主营泰式奶茶的，在市面上港式、台式奶茶层出不穷的时代，我们想让大家喝到不一样的饮品，感受到生活中与众不同的小确幸。",
 				//关于我们
 				aboutImg:[
 					"../../../static/images/home/testImg5.jpg",
@@ -327,13 +332,13 @@
 //				console.log(this.$refs.allCsCont.scrollWidth - this.$refs.allCsCont.clientWidth)
 				var canScrollWidth = this.$refs.allCsCont.scrollWidth - this.$refs.allCsCont.clientWidth; //可以滚动的宽度
 				crouselScrWidth = this.$refs.allCsCont.scrollWidth / 5;
-//				sivTime =  setInterval(()=>{
-//					this.$refs.allCsCont.scrollLeft =  this.$refs.allCsCont.scrollLeft + crouselScrWidth / 100 ;
-//					console.log(this.$refs.allCsCont.scrollLeft)
-//					if(this.$refs.allCsCont.scrollLeft >= canScrollWidth){
-//						this.$refs.allCsCont.scrollLeft = 0;
-//					}
-//				},40)
+				sivTime =  setInterval(()=>{
+					this.$refs.allCsCont.scrollLeft =  this.$refs.allCsCont.scrollLeft + crouselScrWidth / 100 ;
+					console.log(this.$refs.allCsCont.scrollLeft)
+					if(this.$refs.allCsCont.scrollLeft >= canScrollWidth){
+						this.$refs.allCsCont.scrollLeft = 0;
+					}
+				},40)
 			},
 			csPre(){
 				this.$refs.allCsCont.scrollLeft += crouselScrWidth;
@@ -505,7 +510,7 @@
 			/*关于我们*/
 			.ct-aboutAs{
 				display: flex;
-				&>div{
+				&>div,p{
 					width: 50%;
 					/*border: 1px solid;*/
 					padding: 0.2rem;
@@ -513,11 +518,16 @@
 				.ctt-one{
 					.ctto-about{
 						color:#000000;
-						font-size: 0.34rem;
+						font-size: 0.28rem;
 					}
 					.ctto-aboutCont{
+						
+						padding-right: 0;
 						color:#333;
-						font-size: 0.28rem;						
+						font-size: 0.22rem;		
+						&>.p{
+							text-indent: 0.48rem;
+						}				
 					}
 				}
 				.ctt-two{
