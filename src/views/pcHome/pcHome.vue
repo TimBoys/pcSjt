@@ -66,7 +66,7 @@
 							<div v-for="(dfb_body) in detailFS.goods" class="dfb_item" >
 								<x-img v-lazy="dfb_body.goodsPictureRound" class="dfb_img"></x-img>
 								<p class="dfb_name">{{dfb_body.goodsName}}</p>
-								<p class="dfb_price">${{dfb_body.goodsPrice}}</p>
+								<!--<p class="dfb_price">${{dfb_body.goodsPrice}}</p>-->
 							</div>
 						</div>
 					</div>
@@ -146,6 +146,8 @@
 	var DB = new VueDB();
 	var sivTime = null;
 	var crouselScrWidth = null;
+	var canScrollWidth = null;
+	var timeoutflag = null;
 	export default {
 		name: "home",
 		data() {
@@ -156,44 +158,44 @@
 				menusAddr: {},
 				menusStore: [], //店铺数据
 				localAddr: {
-					localPos: "../../../static/images/home/local_position2.png",
+					localPos: "../../../pcStatic/images/home/local_position2.png",
 					localName: ""
 				},
 				aboutCont:"素匠泰茶有别于市面上的传统奶茶，从名字上大家可以知道，我们是主营泰式奶茶的，在市面上港式、台式奶茶层出不穷的时代，我们想让大家喝到不一样的饮品，感受到生活中与众不同的小确幸。",
 				//关于我们
 				aboutImg:[
-					"../../../static/images/home/testImg5.jpg",
-					"../../../static/images/home/testImg6.jpg",
-					"../../../static/images/home/testImg7.jpg",
-					"../../../static/images/home/testImg8.jpg",
+					"../../../pcStatic/images/home/testImg5.jpg",
+					"../../../pcStatic/images/home/testImg6.jpg",
+					"../../../pcStatic/images/home/testImg7.jpg",
+					"../../../pcStatic/images/home/testImg8.jpg",
 				],
 				//加入我们
 				joinUsCont:[{
-					src:"../../../static/images/home/joinUs.png",
+					src:"../../../pcStatic/images/home/joinUs.png",
 					dectOne:"经营模式支持",
 					dectTwo:"完备的管理体系督导现场指导"
 				},{
-					src:"../../../static/images/home/joinUs.png",
+					src:"../../../pcStatic/images/home/joinUs.png",
 					dectOne:"品牌形象支持",
 					dectTwo:"总部一体化免费提供店面的形象设计图，并提供统一的店员服装"
 					},
 					{
-					src:"../../../static/images/home/joinUs.png",
+					src:"../../../pcStatic/images/home/joinUs.png",
 					dectOne:"店铺选址支持",
 					dectTwo:"总部辅助加盟商现场选址，专业建议，合理选择"
 					},
 					{
-					src:"../../../static/images/home/joinUs.png",
+					src:"../../../pcStatic/images/home/joinUs.png",
 					dectOne:"店铺装修支持",
 					dectTwo:"加盟总部将根据加盟商的实际要求提供不同的装修风格，全面辅助加盟商合理装修做到省钱省力"
 					},
 					{
-					src:"../../../static/images/home/joinUs.png",
+					src:"../../../pcStatic/images/home/joinUs.png",
 					dectOne:"总部培训支持",
 					dectTwo:"加盟总部在店面开业前，会对所有的店员进行专业的技术和管理培训"
 					},
 					{
-					src:"../../../static/images/home/joinUs.png",
+					src:"../../../pcStatic/images/home/joinUs.png",
 					dectOne:"开业营销支持",
 					dectTwo:"加盟总部根据当地商圈和加盟商的实际情况进行合理的经营策划，全面辅助加盟商创业"
 					}
@@ -201,29 +203,31 @@
 				],				
 
 				//轮播2
-				cscItem:["../../../static/images/home/testImg1.jpg","../../../static/images/home/testImg2.jpg","../../../static/images/home/testImg3.jpg","../../../static/images/home/testImg4.jpg","../../../static/images/home/testImg5.jpg","../../../static/images/home/testImg6.jpg","../../../static/images/home/testImg7.jpg","../../../static/images/home/testImg8.jpg","../../../static/images/home/testImg2.jpg","../../../static/images/home/testImg1.jpg",],
+				cscItem:["../../../pcStatic/images/home/testImg1.jpg","../../../pcStatic/images/home/testImg2.jpg","../../../pcStatic/images/home/testImg3.jpg","../../../pcStatic/images/home/testImg4.jpg","../../../pcStatic/images/home/testImg5.jpg","../../../pcStatic/images/home/testImg6.jpg","../../../pcStatic/images/home/testImg7.jpg","../../../pcStatic/images/home/testImg8.jpg","../../../pcStatic/images/home/testImg2.jpg","../../../pcStatic/images/home/testImg1.jpg",],
 				crouselScrWidth:null, //每次滚动距离
 				//底部联系我们三个
 				ftclcCont:[{
-					src:"../../static/images/mine/addr.png",
+					src:"../../pcStatic/images/mine/addr.png",
 					textCont:"175-13988 Maycrest Way RichMond"
 				},{
-					src:"../../static/images/mine/tele.png",
+					src:"../../pcStatic/images/mine/tele.png",
 					textCont:"604-604-6044"
 				},{
-					src:"../../static/images/mine/eMail.png",
+					src:"../../pcStatic/images/mine/eMail.png",
 					textCont:"customerservice@123.com"
 				}],
 				//二维码
-				ecode:"../../static/images/mine/ecode.png",
+				ecode:"../../pcStatic/images/mine/ecode.png",
 				//首页最热的三类的图标
 				detailFireSrc: [],
 			}
 		},
 		mounted: function() {
 
-			//初始化轮播图
-			this.allCsCont();
+			//初始化轮播图2
+			canScrollWidth = this.$refs.allCsCont.scrollWidth - this.$refs.allCsCont.clientWidth; //可以滚动的宽度
+			crouselScrWidth = this.$refs.allCsCont.scrollWidth / 10;
+			this.allCsCont2();
 			//初始化店铺
 			this.initGetStoreId();
 			//初始化店铺数据
@@ -327,24 +331,35 @@
 			},
 			
 			//轮播2
-			allCsCont(){
-//				console.dir(this.$refs.allCsCont)
-//				console.log(this.$refs.allCsCont.scrollWidth - this.$refs.allCsCont.clientWidth)
-				var canScrollWidth = this.$refs.allCsCont.scrollWidth - this.$refs.allCsCont.clientWidth; //可以滚动的宽度
-				crouselScrWidth = this.$refs.allCsCont.scrollWidth / 5;
+			allCsCont2(){
+//				console.dir(this.$refs.allCsCont.scrollWidth)
 				sivTime =  setInterval(()=>{
-					this.$refs.allCsCont.scrollLeft =  this.$refs.allCsCont.scrollLeft + crouselScrWidth / 100 ;
-					console.log(this.$refs.allCsCont.scrollLeft)
+					this.$refs.allCsCont.scrollLeft += 1;
+//					console.log(this.$refs.allCsCont.scrollLeft)
 					if(this.$refs.allCsCont.scrollLeft >= canScrollWidth){
 						this.$refs.allCsCont.scrollLeft = 0;
 					}
-				},40)
+				},30)
+				
 			},
+			//右
 			csPre(){
+				clearInterval(sivTime);
+//				console.log("csPre")
 				this.$refs.allCsCont.scrollLeft += crouselScrWidth;
+				if(this.$refs.allCsCont.scrollLeft >= canScrollWidth){
+					this.$refs.allCsCont.scrollLeft = 0;
+				}
+
 			},
+			//左
 			csNext(){
+				clearInterval(sivTime);
+//				console.log("csNext")
 				this.$refs.allCsCont.scrollLeft -= crouselScrWidth;
+				if(this.$refs.allCsCont.scrollLeft <= 0){
+					this.$refs.allCsCont.scrollLeft = this.$refs.allCsCont.clientWidth;
+				}				
 			}
 		},
 		components: {
@@ -360,10 +375,11 @@
 <style scoped="scoped" lang="scss">
 @import "../../assets/scss/util";
 	.initCont {
+		font-size:0.38rem;
 		margin-top: 1rem;
 		.carouselCont {
 			.carouselImg {
-				height: 4.4rem;
+				height: 5rem;
 			}
 		}
 		.topFire_cont {
@@ -386,7 +402,7 @@
 			.localAddr {
 				line-height: 0.44rem;
 				position: absolute;
-				top: -4rem;
+				top: -4.6rem;
 				left: 0.2rem;
 				z-index: 999;
 				word-break: keep-all;
@@ -441,7 +457,7 @@
 			}
 			.storeDetail {
 				position: absolute;
-				top: -3.46rem;
+				top: -4.1rem;
 				left: 0.2rem;
 				z-index: 999;
 				font-size: 0.32rem;
@@ -574,7 +590,7 @@
 					height: 4rem;
 					width: 100%;
 					/*background-color: rgba(0,0,0,0.8);*/
-					background-image: url("../../../static/images/home/testImg5.jpg");
+					background-image: url("../../../pcStatic/images/home/testImg5.jpg");
 					background-repeat:no-repeat ;
 					background-size:100% 100% ;
 					overflow:hidden;
@@ -603,13 +619,17 @@
 							&::-webkit-scrollbar { width: 0 !important }
 							-ms-overflow-style: none;
 							overflow: -moz-scrollbars-none;
+							display: flex;
+							align-items: center;
 						.csCont{
 							min-width:25rem;
+							margin-top: 0.3rem;
 							.cscItem{
 								width: 2.5rem;
 								.cscItemImg{
 									width:2rem;
 									height: 2rem;
+									border-radius:6px ;
 								}
 							}
 						}
@@ -626,7 +646,7 @@
 					text-align: center;
 					width: 100%;
 					color: $originColor;
-					padding: 0.2rem;
+					padding: 0.2rem 0 0.4rem 0;
 				}				
 				.ctt-two{
 					.abSrcCont{
@@ -718,18 +738,18 @@
 					background-color: #fff;
 					.df_header {
 						height: 1rem;
-						padding-left: .4rem;
+						padding-left: 0.4rem;
 						display: flex;
 						align-items: center;
 						justify-content: center;
 						.dfh_img {
-							width: .6rem;
-							height: .6rem;
+							width: 0.6rem;
+							height: 0.6rem;
 						}
 						.dfh_title {
 							display: inline-block;
 							padding-left: .1rem;
-							font-size: .4rem;
+							font-size: 0.4rem;
 							color: rgb(254, 122, 16);
 						}
 						.dfh_title2 {
@@ -751,9 +771,9 @@
 							padding: 0.2rem;
 							@include box-sizing;
 							.dfb_img {
-								width: 2rem;
-								height: 2rem;
-								border-radius: 50%;
+								width: 2.4rem;
+								height: 2.4rem;
+								border-radius: 8px;
 								padding-bottom: 0.1rem;
 							}
 							.dfb_name,

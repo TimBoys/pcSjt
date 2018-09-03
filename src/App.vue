@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+  	<div @click.capture="initNav" >
   		<nav class="navbar navbarSjt navbar-default navbar-fixed-top" role="navigation">
 	<div class="container-fluid"> 
 	<div class="navbar-header">
@@ -47,7 +48,7 @@
         <!--</keep-alive>-->
       </transition>
 
-      
+      </div>
   </div>
 </template>
 
@@ -63,7 +64,7 @@ export default {
   data(){
   	return {
   		nowUrl:"/",
-  		sjtLogo:"../../static/images/mine/sjtLogo.jpg",
+  		sjtLogo:"../../pcStatic/images/mine/sjtLogo.jpg",
   		iswbStyle:false,
   		localLang: "zh",
   	}
@@ -73,7 +74,8 @@ export default {
   			this.nowUrl = to.fullPath;
 //			console.dir(this.$refs.divCollapse.classList)
   			if (this.$refs.divCollapse.classList[this.$refs.divCollapse.classList.length -1] == "in") {
-					$(".divCollapse").removeClass("in");
+					$(".divCollapse").removeClass("in").attr("aria-expanded",false);
+					$('#collapse').addClass("collapsed").attr("aria-expanded",false);
 					
   			}
   	}
@@ -99,7 +101,14 @@ export default {
 					this.localLang = DB.getItem("localLang").toString() == "en" ? "zh" : "en";
 				}
 			},
-		
+			//初始化导航
+			initNav(e){
+//				console.log(e.srcElement.className)
+				if (e.srcElement.className != "icon-bar") {
+						$(".divCollapse").removeClass("in").attr("aria-expanded",false);
+						$('#collapse').addClass("collapsed").attr("aria-expanded",false);							
+				}
+			},		
 			//切换语言
 			changeLang(item) {
 				console.log(item);
@@ -147,6 +156,7 @@ export default {
 	@import "./assets/scss/util";
  /*@import '~@/assets/font/iconfont.css'*/
 	.navbarSjt{
+			font-size:0.38rem;
 			height: 1rem;
 			min-height:0;
 			background-color: #fff;
@@ -215,7 +225,7 @@ export default {
 						opacity: 0.4;
 					}
 					font-size: 0.3rem;
-					line-height: 0.8rem;
+					line-height: 0.65rem;
 					height: 1rem;
 				}
 			}
