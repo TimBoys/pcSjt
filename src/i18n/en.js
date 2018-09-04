@@ -81,7 +81,47 @@ module.exports = {
       	pleaseCheckInfo:"The information has been sent. Please check!",     	
 				systemError:"system Error!",      	
       	dataLoading:"Data Loading..."      	
-      }      
+      },
+      pcHome:{
+      	aboutAs:"About Us",
+      	aboutAsCont1:"The vegetarian Thai tea is different from the traditional milk tea in the market. As you can know from the name, we are mainly specialized in Thai milk tea. In the era of Hong Kong style and Taiwanese milk tea emerging endlessly on the market, we want everyone to drink different drinks and feel the unique little happiness in life.",
+      	aboutAsCont2:"'Prime' takes its original and best meaning and aims to convey the idea that we want to bring the original and best products to everyone, so that people can drink the drinks we make with ingenuity.",
+      	aboutAsCont3:"In order to create a distinctive brand image, we aim to break through the traditional Taiwanese milk tea taste, incorporate Thai production technology, and innovate the development concept of milk tea. Now, we have become a benchmark brand in the industry. We will never forget our original intention and let the vegetarian Thai tea become a more popular brand.",
+      	PrimeThaiTea:"Prime's Thai tea",
+      	home:"Home",
+      	nav_djjx:"Quarterly selection",
+      	nav_sysp:"All the goods",
+      	nav_grzx:"Personal center",
+      	nav_afj:"Apply for joining",
+      	bringNbe:"Bring a new beverage experience to your heart",
+      	egCupTea:"Every good cup of tea starts with ingredients",
+      	toSupport:"To support",
+      	BusinessMS:"Business model support",
+      	BusinessMSCont:"Complete management system supervision and field guidance",
+      	BrandIS:"Brand image support",
+      	BrandISCont:"The headquarters provides the image design drawing of the store free of charge, and provides uniform clothing for the shop assistants",
+      	StoreLS:"Store location support",
+      	StoreLSCont:"Headquarter assist franchisee site selection, professional advice and reasonable selection",
+ 				StoreDS:"Store decoration support",     
+ 				StoreDSCont:"The franchisee headquarters will provide different decoration styles according to the actual requirements of the franchisee",     
+				HeadquartersTS:"Headquarters training support",  
+				HeadquartersTSCont:"The franchisee will provide technical and management training to all employees before the store opens",  
+				OpeningMS:"Opening marketing support",     
+				OpeningMSCont:"The franchisee headquarters carries out reasonable business planning according to the local business circle and the franchisee's actual situation, fully assists the franchisee to start a business",     
+				contactUs:"Contact Us",       
+				contactUsCont:"Contact us for free information to learn more about the project",       
+        yourName:"your name",
+        contactNumber:"contact number",
+      	contactEmail:"Contact e-mail",
+      	textareaCont:"Fill in relevant information, such as return visit time, information problem description, etc.",
+      	IsRequired:"Is required",
+       	Submit:"submit",
+      	failPhone:"Please fill in the correct mobile phone number!",
+      	failEmail:"Please fill in the correct email address!",
+      	trueMsg:"The information was submitted successfully. We will contact you later. Please keep the phone open!",
+      	failMsg:"Please fill in the correct contact information!",      
+      
+      }
       
     }
 

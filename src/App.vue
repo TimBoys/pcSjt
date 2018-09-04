@@ -12,23 +12,15 @@
 			<span class="icon-bar"></span>
 		</button>
 
-		<a class="navbar-brand nsjt-brand" href="#"><x-img v-lazy="sjtLogo"  class="sjtLogo_img"></x-img>·素匠泰茶</a>
+		<a class="navbar-brand nsjt-brand" href="#"><x-img v-lazy="sjtLogo"  class="sjtLogo_img"></x-img>·{{$t('pcHome.PrimeThaiTea')}}</a>
 	</div>
 	<div class="collapse navbar-collapse divCollapse" id="example-navbar-collapse" ref="divCollapse">
-		<ul class="nav navbar-nav navbar-right nsjt-right wbStyle" v-if="iswbStyle">
-			<li><a href="#/pcHome" :class="{'actived' : isActive('pcHome')}">首页</a></li>
-			<li><a href="./wxindex.html#/home" :class="{'actived' : isActive('home')}">当季精选</a></li>
-			<li><a href="./wxindex.html#/classification" :class="{'actived' : isActive('classification')}">所有商品</a></li>
-			<li><a href="./wxindex.html#/mine" :class="{'actived' : isActive('mine')}">个人中心</a></li>
-			<li><a href="#/applyJoin" :class="{'actived' : isActive('applyJoin')}">申请加盟</a></li>
-		</ul>
-		
-		<ul class="nav navbar-nav navbar-right nsjt-right" v-else>
-			<li><a href="#/pcHome" :class="{'actived' : isActive('pcHome')}">首页</a></li>
-			<li><a href="./wxindex.html#/home" :class="{'actived' : isActive('home')}">当季精选</a></li>
-			<li><a href="./wxindex.html#/classification" :class="{'actived' : isActive('classification')}">所有商品</a></li>
-			<li><a href="./wxindex.html#/mine" :class="{'actived' : isActive('mine')}">个人中心</a></li>
-			<li><a href="#/applyJoin" :class="{'actived' : isActive('applyJoin')}">申请加盟</a></li>
+		<ul class="nav navbar-nav navbar-right nsjt-right" :class="{'wbStyle' : iswbStyle}" >
+			<li><a href="#/pcHome" :class="{'actived' : isActive('pcHome')}">{{$t('pcHome.home')}}</a></li>
+			<li><a href="./wxindex.html#/home" :class="{'actived' : isActive('home')}">{{$t('pcHome.nav_djjx')}}</a></li>
+			<li><a href="./wxindex.html#/classification" :class="{'actived' : isActive('classification')}">{{$t('pcHome.nav_sysp')}}</a></li>
+			<li><a href="./wxindex.html#/mine" :class="{'actived' : isActive('mine')}">{{$t('pcHome.nav_grzx')}}</a></li>
+			<li><a href="#/applyJoin" :class="{'actived' : isActive('applyJoin')}">{{$t('pcHome.nav_afj')}}</a></li>
 		</ul>
 		
 	</div>
@@ -88,7 +80,7 @@ export default {
 	},
 	computed:{
 			showLan:function(){
-				return this.localLang.toUpperCase();
+				return this.localLang == "zh" ? "中" : "EN";
 			}
 		},
 	methods:{

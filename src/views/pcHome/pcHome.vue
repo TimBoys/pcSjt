@@ -31,19 +31,19 @@
 <!--内容模块-->
 		<div class="homeContainer">
 			<div class="ct-title">
-				<div class="ctt-oneTitle">素匠泰茶</div>
+				<div class="ctt-oneTitle">{{$t('pcHome.PrimeThaiTea')}}</div>
 				<div class="ctt-twoTitle"><div class="line"></div></div>
-				<div class="ctt-threeTitle">用心带来全新饮品体验</div>
+				<div class="ctt-threeTitle">{{$t('pcHome.bringNbe')}}</div>
 				<div class="ctt-fourTitle">素匠泰茶Prime's Thai tea</div>
 			</div>
 <!--关于我们-->
 			<div class="ct-aboutAs">
 				<div class="ctt-one">
-					<div class="ctto-about">关于我们</div>
+					<div class="ctto-about">{{$t('pcHome.aboutAs')}}</div>
 					<div class="ctto-aboutCont">
-						<div class="p">素匠泰茶有别于市面上的传统奶茶，从名字上大家可以知道，我们是主营泰式奶茶的，在市面上港式、台式奶茶层出不穷的时代，我们想让大家喝到不一样的饮品，感受到生活中与众不同的小确幸。</div>
-						<div class="p">“Prime”我们取它的最初的、最好的意思，旨在为大家传递我们想把最初的、最好的产品带给大家的理念，让大家能喝到我们用匠心打造的饮品。</div>	
-						<div class="p">为了塑造与众不同的品牌形象，我们以突破传统台式奶茶口味为宗旨，融入泰式制作工艺，创新奶茶发展理念，现在在行业中已经成为了一个标杆式的品牌，我们会不忘初心，让素匠泰茶成为一个被更多人喜欢的品牌。</div>							
+						<div class="p">{{$t('pcHome.aboutAsCont1')}}</div>
+						<div class="p">{{$t('pcHome.aboutAsCont2')}}</div>	
+						<div class="p">{{$t('pcHome.aboutAsCont3')}}</div>							
 					</div>
 					
 				</div>
@@ -74,9 +74,9 @@
 			</div>
 <!--轮播2-->
 		<div class="carouselCont2">
-				<div class="ctt-oneTitle">素匠泰茶</div>
+				<div class="ctt-oneTitle">{{$t('pcHome.PrimeThaiTea')}}</div>
 				<div class="ctt-twoTitle"><div class="line"></div></div>
-				<div class="ctt-threeTitle">每一杯好差，从用料开始</div>	
+				<div class="ctt-threeTitle">{{$t('pcHome.egCupTea')}}</div>	
 				<!--模态框2-->
 				<div class="carouseScroll">
 					<div class="csModel">
@@ -99,7 +99,7 @@
 
 <!--加盟-->
 		<div class="joinUsCont">
-				<div class="ctt-threeTitle">加盟支持</div>	
+				<div class="ctt-threeTitle">{{$t('pcHome.toSupport')}}</div>	
 				<div class="ctt-two">
 					<div v-for="(abSrcItem,index) in joinUsCont" :key="index" class="abSrcCont">
 						<div>
@@ -116,7 +116,7 @@
 					<x-img v-lazy="aboutImg[2]" class="abSrcContImg"></x-img>
 					<div class="fuTrueCont">
 						<div class="ftc-left">
-							<div class="ftcl-title">联系我们</div>
+							<div class="ftcl-title">{{$t('pcHome.contactUs')}}</div>
 							<div class="ftcl-cont">
 								<div class="ftclc-item" v-for="(ftclcItem,index) in ftclcCont">
 									<x-img v-lazy="ftclcItem.src" class="ftcrc-Img"></x-img>
@@ -147,7 +147,7 @@
 	var sivTime = null;
 	var crouselScrWidth = null;
 	var canScrollWidth = null;
-	var timeoutflag = null;
+	var timeoutflag = 1;
 	export default {
 		name: "home",
 		data() {
@@ -161,7 +161,6 @@
 					localPos: "../../../pcStatic/images/home/local_position2.png",
 					localName: ""
 				},
-				aboutCont:"素匠泰茶有别于市面上的传统奶茶，从名字上大家可以知道，我们是主营泰式奶茶的，在市面上港式、台式奶茶层出不穷的时代，我们想让大家喝到不一样的饮品，感受到生活中与众不同的小确幸。",
 				//关于我们
 				aboutImg:[
 					"../../../pcStatic/images/home/testImg5.jpg",
@@ -172,32 +171,32 @@
 				//加入我们
 				joinUsCont:[{
 					src:"../../../pcStatic/images/home/joinUs.png",
-					dectOne:"经营模式支持",
-					dectTwo:"完备的管理体系督导现场指导"
+					dectOne:this.$t('pcHome.BusinessMS'),
+					dectTwo:this.$t('pcHome.BusinessMSCont')
 				},{
 					src:"../../../pcStatic/images/home/joinUs.png",
-					dectOne:"品牌形象支持",
-					dectTwo:"总部一体化免费提供店面的形象设计图，并提供统一的店员服装"
+					dectOne:this.$t('pcHome.BrandIS'),
+					dectTwo:this.$t('pcHome.BrandISCont')
 					},
 					{
 					src:"../../../pcStatic/images/home/joinUs.png",
-					dectOne:"店铺选址支持",
-					dectTwo:"总部辅助加盟商现场选址，专业建议，合理选择"
+					dectOne:this.$t('pcHome.StoreLS'),
+					dectTwo:this.$t('pcHome.StoreLSCont'),
 					},
 					{
 					src:"../../../pcStatic/images/home/joinUs.png",
-					dectOne:"店铺装修支持",
-					dectTwo:"加盟总部将根据加盟商的实际要求提供不同的装修风格，全面辅助加盟商合理装修做到省钱省力"
+					dectOne:this.$t('pcHome.StoreDS'),
+					dectTwo:this.$t('pcHome.StoreDSCont'),
 					},
 					{
 					src:"../../../pcStatic/images/home/joinUs.png",
-					dectOne:"总部培训支持",
-					dectTwo:"加盟总部在店面开业前，会对所有的店员进行专业的技术和管理培训"
+					dectOne:this.$t('pcHome.HeadquartersTS'),
+					dectTwo:this.$t('pcHome.HeadquartersTSCont'),
 					},
 					{
 					src:"../../../pcStatic/images/home/joinUs.png",
-					dectOne:"开业营销支持",
-					dectTwo:"加盟总部根据当地商圈和加盟商的实际情况进行合理的经营策划，全面辅助加盟商创业"
+					dectOne:this.$t('pcHome.OpeningMS'),
+					dectTwo:this.$t('pcHome.OpeningMSCont'),
 					}
 					
 				],				
@@ -336,7 +335,7 @@
 				sivTime =  setInterval(()=>{
 					this.$refs.allCsCont.scrollLeft += 1;
 //					console.log(this.$refs.allCsCont.scrollLeft)
-					if(this.$refs.allCsCont.scrollLeft >= canScrollWidth){
+					if(this.$refs.allCsCont.scrollLeft >= canScrollWidth - 1){
 						this.$refs.allCsCont.scrollLeft = 0;
 					}
 				},30)
@@ -344,12 +343,12 @@
 			},
 			//右
 			csPre(){
-				clearInterval(sivTime);
-//				console.log("csPre")
-				this.$refs.allCsCont.scrollLeft += crouselScrWidth;
-				if(this.$refs.allCsCont.scrollLeft >= canScrollWidth){
-					this.$refs.allCsCont.scrollLeft = 0;
-				}
+					clearInterval(sivTime);
+					console.log("csPre")
+					this.$refs.allCsCont.scrollLeft += crouselScrWidth;
+					if(this.$refs.allCsCont.scrollLeft >= canScrollWidth - 1){
+						this.$refs.allCsCont.scrollLeft = 0;
+					}
 
 			},
 			//左
@@ -621,6 +620,7 @@
 							overflow: -moz-scrollbars-none;
 							display: flex;
 							align-items: center;
+							/*padding-left: 0.3rem;*/
 						.csCont{
 							min-width:25rem;
 							margin-top: 0.3rem;

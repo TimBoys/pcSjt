@@ -82,6 +82,49 @@ module.exports =  {
 				systemError:"系统错误!",
       	dataLoading:"数据加载中..."
       	
+      },
+      pcHome:{
+      	aboutAs:"关于我们",
+      	aboutAsCont1:"素匠泰茶有别于市面上的传统奶茶，从名字上大家可以知道，我们是主营泰式奶茶的，在市面上港式、台式奶茶层出不穷的时代，我们想让大家喝到不一样的饮品，感受到生活中与众不同的小确幸。",
+      	aboutAsCont2:"“Prime”我们取它的最初的、最好的意思，旨在为大家传递我们想把最初的、最好的产品带给大家的理念，让大家能喝到我们用匠心打造的饮品。",
+      	aboutAsCont3:"为了塑造与众不同的品牌形象，我们以突破传统台式奶茶口味为宗旨，融入泰式制作工艺，创新奶茶发展理念，现在在行业中已经成为了一个标杆式的品牌，我们会不忘初心，让素匠泰茶成为一个被更多人喜欢的品牌。",
+      	PrimeThaiTea:"素匠泰茶",
+      	home:"首页",
+      	nav_djjx:"当季精选",
+      	nav_sysp:"所有商品",
+      	nav_grzx:"个人中心",
+      	nav_afj:"申请加盟",
+      	bringNbe:"用心带来全新饮品体验",
+      	egCupTea:"每一杯好茶，从用料开始",
+      	toSupport:"加盟支持",
+      	BusinessMS:"经营模式支持",
+      	BusinessMSCont:"完备的管理体系督导现场指导",
+      	BrandIS:"品牌形象支持",
+      	BrandISCont:"总部一体化免费提供店面的形象设计图，并提供统一的店员服装",
+      	StoreLS:"店铺选址支持",
+      	StoreLSCont:"总部辅助加盟商现场选址，专业建议，合理选择",
+ 				StoreDS:"店铺装修支持",     
+ 				StoreDSCont:"加盟总部将根据加盟商的实际要求提供不同的装修风格，全面辅助加盟商合理装修做到省钱省力",     
+				HeadquartersTS:"总部培训支持",  
+				HeadquartersTSCont:"加盟总部在店面开业前，会对所有的店员进行专业的技术和管理培训",  
+				OpeningMS:"开业营销支持",     
+				OpeningMSCont:"加盟总部根据当地商圈和加盟商的实际情况进行合理的经营策划，全面辅助加盟商创业",     
+				contactUs:"联系我们",
+				contactUsCont:"联系我们，获取免费资料，进一步了解项目",
+      	yourName:"你的名字",
+      	contactNumber:"联系电话",
+      	contactEmail:"联系邮箱",
+      	textareaCont:"填写相关信息，如回访时间，资讯问题描述等。",
+        IsRequired:"为必填项目",
+      	Submit:"提交",
+      	failPhone:"请填写正确的手机号码！",
+      	failEmail:"请填写正确的邮箱！",
+      	trueMsg:"信息提交成功,稍后将有工作人员与您联系,请保持电话畅通！",
+      	failMsg:"请填写正确的联系信息！",
+      	
+      	
+      
+      
       }
       
     }

@@ -6,27 +6,27 @@
 
 <!--提交信息-->
     	<div class="formCont">
-				<div class="ctt-oneTitle">联系我们，获取免费资料，进一步了解项目</div>    	
+				<div class="ctt-oneTitle">{{$t('pcHome.contactUsCont')}}</div>    	
     			<div class="ctt-cont">
     				 <div class="cttc-Item">
     				 		<span>*</span>
-    				 		<Input v-model="submitData.name" placeholder="你的名字" :maxlength="50" class="cttcInput"  />
+    				 		<Input v-model="submitData.name" :placeholder="yourName" :maxlength="50" class="cttcInput"  />
     				 </div>
     				 <div class="cttc-Item">
     				 		<span>*</span>
-    				 		<Input v-model="submitData.telephone" :maxlength="30" placeholder="联系电话" class="cttcInput"  />
+    				 		<Input v-model="submitData.telephone" :maxlength="30" :placeholder="contactNumber" class="cttcInput"  />
     				 </div> 
     				 <div class="cttc-Item">
     				 		<span style="visibility: hidden;">#</span>
-    				 		<Input v-model="submitData.email" placeholder="联系邮箱" :maxlength="50" class="cttcInput"  />
+    				 		<Input v-model="submitData.email" :placeholder="contactEmail" :maxlength="50" class="cttcInput"  />
     				 </div>      				 
     				 <div class="cttc-Item">
 	    				  <span>*</span>
-	    				  <Input v-model="submitData.context" type="textarea" :maxlength="450" :rows="5" class="cttcInput" placeholder="填写相关信息，如回访时间，资讯问题描述等。"  />
+	    				  <Input v-model="submitData.context" type="textarea" :maxlength="450" :rows="5" class="cttcInput" :placeholder="textareaCont"  />
     				  </div>
     				 <div class="cttc-Item cttc-btn">
-	    				  <span>*<span>为必填项目</span></span>
-	    				  <Button type="warning" class="formSubmit" @click.native="formSubmit">提交</Button>
+	    				  <span>*<span> {{$t('pcHome.IsRequired')}}</span></span>
+	    				  <Button type="warning" class="formSubmit" @click.native="formSubmit">{{$t('pcHome.Submit')}}</Button>
     				  </div>    				  
     				  
     				  
@@ -41,7 +41,7 @@
 					<x-img v-lazy="aboutImg" class="abSrcContImg"></x-img>
 					<div class="fuTrueCont">
 						<div class="ftc-left">
-							<div class="ftcl-title">联系我们</div>
+							<div class="ftcl-title">{{$t('pcHome.contactUs')}}</div>
 							<div class="ftcl-cont">
 								<div class="ftclc-item" v-for="(ftclcItem,index) in ftclcCont">
 									<x-img v-lazy="ftclcItem.src" class="ftcrc-Img"></x-img>
@@ -68,6 +68,10 @@
 		name: "home",
 		data() {
 			return {
+				 yourName:this.$t('pcHome.yourName'),
+				 contactNumber:this.$t('pcHome.contactNumber'),
+				 contactEmail:this.$t('pcHome.contactEmail'),
+				 textareaCont:this.$t('pcHome.textareaCont'),
 				 joinUsHeadImg:"../../../pcStatic/images/home/joinUsHeadImg.jpg",
 				 aboutImg:"../../../pcStatic/images/home/testImg7.jpg",
 				//底部联系我们三个
@@ -96,13 +100,13 @@
 				if (this.submitData.name && this.submitData.telephone && this.submitData.context) {
 					if (!/^[0-9-]+$/.test(this.submitData.telephone)) {
 						this.$vux.toast.show({
-							text: "请填写正确的手机号码！",
+							text: this.$t('pcHome.failPhone'),
 							type: "text",
 						})	
 						return false;
 					}else if(this.submitData.email && !/^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/.test(this.submitData.email)){
 						this.$vux.toast.show({
-							text: "请填写正确的邮箱！",
+							text: this.$t('pcHome.failEmail'),
 							type: "text",
 						})	
 						return false;						
@@ -112,7 +116,7 @@
 						console.log(res);
 						if(res.status == 200 && res.data.rspCode == "00000") {
 							this.$vux.toast.show({
-								text: "信息提交成功,稍后将有工作人员与您联系,请保持电话畅通！",
+								text:this.$t('pcHome.trueMsg'),
 								type: "text",
 							})	
 							this.submitData = {
@@ -127,7 +131,7 @@
 					})					
 				}else{
 					this.$vux.toast.show({
-						text: "请填写正确的联系信息！",
+						text: this.$t('pcHome.failMsg'),
 						type: "text",
 					})					
 				}
