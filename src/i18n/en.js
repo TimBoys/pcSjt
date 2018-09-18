@@ -87,7 +87,7 @@ module.exports = {
       	aboutAsCont1:"The vegetarian Thai tea is different from the traditional milk tea in the market. As you can know from the name, we are mainly specialized in Thai milk tea. In the era of Hong Kong style and Taiwanese milk tea emerging endlessly on the market, we want everyone to drink different drinks and feel the unique little happiness in life.",
       	aboutAsCont2:"'Prime' takes its original and best meaning and aims to convey the idea that we want to bring the original and best products to everyone, so that people can drink the drinks we make with ingenuity.",
       	aboutAsCont3:"In order to create a distinctive brand image, we aim to break through the traditional Taiwanese milk tea taste, incorporate Thai production technology, and innovate the development concept of milk tea. Now, we have become a benchmark brand in the industry. We will never forget our original intention and let the vegetarian Thai tea become a more popular brand.",
-      	PrimeThaiTea:"Prime's Thai tea",
+      	PrimeThaiTea:"PRIME'S THAI TEA",
       	home:"Home",
       	nav_djjx:"Quarterly selection",
       	nav_sysp:"All the goods",

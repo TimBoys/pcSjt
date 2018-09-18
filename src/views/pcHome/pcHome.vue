@@ -1,7 +1,7 @@
 <template>
 	<div class="initCont">
 
-		<Carousel v-model="value1" loop class="carouselCont">
+		<Carousel v-model="value1" loop autoplay :autoplay-speed="4000"  class="carouselCont">
 			<CarouselItem v-for="(imgItem,index) in banner" :key="index">
 				<div class="demo-carousel">
 					<x-img class="carouselImg" v-lazy="imgItem.figureAddress" /></x-img>
@@ -34,7 +34,7 @@
 				<div class="ctt-oneTitle">{{$t('pcHome.PrimeThaiTea')}}</div>
 				<div class="ctt-twoTitle"><div class="line"></div></div>
 				<div class="ctt-threeTitle">{{$t('pcHome.bringNbe')}}</div>
-				<div class="ctt-fourTitle">素匠泰茶Prime's Thai tea</div>
+				<div class="ctt-fourTitle">素匠·泰茶Prime's Thai tea</div>
 			</div>
 <!--关于我们-->
 			<div class="ct-aboutAs">
