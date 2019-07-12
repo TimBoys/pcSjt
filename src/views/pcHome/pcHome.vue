@@ -1,7 +1,7 @@
 <template>
 	<div class="initCont">
 
-		<Carousel v-model="value1" loop autoplay :autoplay-speed="4000"  class="carouselCont">
+		<Carousel v-model="value1"  autoplay :autoplay-speed="4000"  class="carouselCont">
 			<CarouselItem v-for="(imgItem,index) in banner" :key="index">
 				<div class="demo-carousel">
 					<x-img class="carouselImg" v-lazy="imgItem.figureAddress" /></x-img>
@@ -152,7 +152,13 @@
 		name: "home",
 		data() {
 			return {
-				banner: [],
+				banner: [{
+					figureAddress:"http://sj-teamilk.oss-us-west-1.aliyuncs.com/banner/cn/b4KGTaJsMn.jpg"
+				}
+//				,{
+//					figureAddress:"http://sj-teamilk.oss-us-west-1.aliyuncs.com/banner/cn/b4KGTaJsMn.jpg"
+//				}
+				],
 				value1: 0,
 				isShowAs2: false,
 				menusAddr: {},
@@ -286,7 +292,7 @@
 					console.log(res)
 					console.log(res.data.data.data)
 					if(res.status == 200 && res.data.rspCode == "00000") {
-						this.banner = res.data.data.data;
+//						this.banner = res.data.data.data;
 					}
 				}).catch((err) => {
 					console.log(err)
